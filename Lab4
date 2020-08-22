@@ -1,0 +1,325 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Lab4_JGiesing
+{
+    class Program
+    {
+
+
+        class ValidationLibrary
+        {
+
+            public static bool IsValidState(string TempState)
+            {
+                bool result = false;
+
+                if (TempState.Length == 2)
+                {
+                    result = true;
+                }
+
+                return result;
+            }
+
+
+            public static bool IsValidZip(string TempZip)
+            {
+                bool result = false;
+
+                if (TempZip.Length == 5)
+                {
+                    result = true;
+                }
+
+                return result;
+            }
+
+
+            public static bool IsValidEmail(string TempEmail)
+            {
+                bool result = false;
+
+                if (TempEmail.Length >= 8)
+                {
+                    result = true;
+                }
+
+                return result;
+            }
+        }
+
+
+        public class BasicTools
+        {
+
+            public static void Pause()
+            {
+                Console.WriteLine("\n\nPress Enter to Continue\n");
+                Console.ReadLine();
+            }
+        }
+
+
+        public class Person
+        {
+
+            private string firstName;
+            private string middleName;
+            private string lastName;
+            private string street1;
+            private string street2;
+            private string city;
+            private string state;
+            private string zip;
+            private string phone;
+            private string email;
+
+
+            public string FirstName
+            {
+                get
+                {
+                    return firstName;
+                }
+
+                set
+                {
+                    firstName = value;
+                }
+            }
+
+
+            public string MiddleName
+            {
+                get
+                {
+                    return middleName;
+                }
+
+                set
+                {
+                    middleName = value;
+                }
+            }
+
+
+            public string LastName
+            {
+                get
+                {
+                    return lastName;
+                }
+
+                set
+                {
+                    lastName = value;
+                }
+            }
+
+
+            public string Street1
+            {
+                get
+                {
+                    return street1;
+                }
+
+                set
+                {
+                    street1 = value;
+                }
+            }
+
+
+            public string Street2
+            {
+                get
+                {
+                    return street2;
+                }
+
+                set
+                {
+                    street2 = value;
+                }
+            }
+
+
+            public string City
+            {
+                get
+                {
+                    return city;
+                }
+
+                set
+                {
+                    city = value;
+                }
+            }
+
+
+            public string State
+            {
+                get
+                {
+                    return state;
+                }
+
+                set
+                {
+                    state = value;
+                }
+            }
+
+
+            public string Zip
+            {
+                get
+                {
+                    return zip;
+                }
+
+                set
+                {
+                    zip = value;
+                }
+            }
+
+
+            public string Phone
+            {
+                get
+                {
+                    return phone;
+                }
+
+                set
+                {
+                    phone = value;
+                }
+            }
+
+
+            public string Email
+            {
+                get
+                {
+                    return email;
+                }
+
+                set
+                {
+                    email = value;
+                }
+            }
+        }
+
+
+        static void Main(string[] args)
+        {
+
+            bool blnResult = false;
+
+            Person temp = new Person();
+
+
+            Console.Write("Enter the persons First Name: ");
+            temp.FirstName = Console.ReadLine();
+
+            Console.Write("\nEnter the persons Middle Name: ");
+            temp.MiddleName = Console.ReadLine();
+
+            Console.Write("\nEnter the persons Last Name: ");
+            temp.LastName = Console.ReadLine();
+
+            Console.Write("\nEnter the persons Street Address: ");
+            temp.Street1 = Console.ReadLine();
+
+            Console.Write("\nEnter the persons 2nd Street Address: ");
+            temp.Street2 = Console.ReadLine();
+
+            Console.Write("\nEnter the persons City: ");
+            temp.City = Console.ReadLine();
+
+            
+            do
+            {
+                Console.Write("\nEnter the persons State: ");
+                string TempState = Console.ReadLine();
+                blnResult = ValidationLibrary.IsValidState(TempState);
+
+                if (blnResult == false)
+                {
+                    Console.Write("\nIncorrect format, try again. (EX: 'RI')");
+                }
+                else
+                {
+                    temp.State = TempState;
+                }
+
+            } while (blnResult == false);
+
+
+            do
+            {
+                Console.Write("\nEnter the persons Zip: ");
+                string TempZip = Console.ReadLine();
+                blnResult = ValidationLibrary.IsValidZip(TempZip);
+
+                if (blnResult == false)
+                {
+                    Console.Write("\nIncorrect format, try again. (EX: '12345')");
+                }
+                else
+                {
+                    temp.Zip = TempZip;
+                }
+
+            } while (blnResult == false);
+
+
+            Console.Write("\nEnter the persons Phone Number: ");
+            temp.Phone = Console.ReadLine();
+
+
+            do
+            {
+                Console.Write("\nEnter the persons Email: ");
+                string TempEmail = Console.ReadLine();
+                blnResult = ValidationLibrary.IsValidEmail(TempEmail);
+
+                if (blnResult == false)
+                {
+                    Console.Write("\nIncorrect format, 8 digits minimum. Try again.");
+                }
+                else
+                {
+                    temp.Email = TempEmail;
+                }
+
+            } while (blnResult == false);
+
+
+
+
+            Console.Write("\n\n\nPerson details:\n");
+            Console.Write($"\nName: {temp.FirstName} {temp.MiddleName} {temp.LastName}");
+            Console.Write($"\nAddress 1: {temp.Street1}");
+            Console.Write($"\nAddress 2: {temp.Street2}");
+            Console.Write($"\nCity: {temp.City}");
+            Console.Write($"\nState: {temp.State}");
+            Console.Write($"\nZip: {temp.Zip}");
+            Console.Write($"\nPhone: {temp.Phone}");
+            Console.Write($"\nEmail: {temp.Email}");
+
+
+            BasicTools.Pause();
+
+        }
+    }
+}
